@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Portfolio of Yafi Faishal — showcasing web development projects and academic experience.">
+  <title>Portfolio | Yafi Faishal</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <input type="checkbox" id="dark-mode-toggle" class="dark-toggle" aria-label="Toggle dark mode">
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Yafi Faishal Home">
+        <span class="logo-dot"></span> Yafi Faishal
+      </a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portfolio.html" class="active">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <label for="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="toggle-track">
+          <span class="toggle-thumb"></span>
+        </span>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <!-- PORTFOLIO HERO -->
+    <section class="portfolio-hero" aria-labelledby="portfolio-heading">
+      <div class="container">
+        <p class="section-tag anim-fade-up">My Work</p>
+        <h1 id="portfolio-heading" class="section-title anim-fade-up delay-1">Projects &amp; Experience</h1>
+        <p class="section-subtitle anim-fade-up delay-2 subtitle-center">
+          A curated selection of projects I've built — from academic assignments to personal explorations in web
+          development and design.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section aria-labelledby="projects-heading">
+      <div class="container">
+        <p class="section-tag anim-fade-up">Featured Projects</p>
+        <h2 id="projects-heading" class="section-title anim-fade-up delay-1">Things I've Built</h2>
+
+        <div class="projects-grid">
+
+          <article class="project-card anim-fade-up delay-1">
+            <div class="project-img">
+              <div class="project-img-placeholder grad-purple">
+                💼
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">React</span>
+                <span class="project-tag">SPA</span>
+                <span class="project-tag">JavaScript</span>
+              </div>
+              <h3 class="project-title">CV Portfolio — SPA</h3>
+              <p class="project-desc">A single-page application CV portfolio built with React, presenting personal
+                information, skills, and experience in a clean, interactive layout deployed on Vercel.</p>
+              <div class="project-links">
+                <a href="https://spa-cv-portfolio-yafi-faishal.vercel.app" target="_blank" rel="noopener noreferrer"
+                  class="project-link" aria-label="View CV Portfolio live demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live Demo
+                </a>
+                <a href="https://github.com/YafiFaishal" target="_blank" rel="noopener noreferrer" class="project-link"
+                  aria-label="View CV Portfolio source code on GitHub">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i> Source Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card anim-fade-up delay-2">
+            <div class="project-img">
+              <div class="project-img-placeholder grad-pink">
+                🎓
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">Web App</span>
+                <span class="project-tag">Vercel</span>
+              </div>
+              <h3 class="project-title">Talenta UMS</h3>
+              <p class="project-desc">A web platform developed for Universitas Muhammadiyah Surakarta to support student
+                talent development and academic opportunity discovery.</p>
+              <div class="project-links">
+                <a href="https://jadi-talentaums.vercel.app" target="_blank" rel="noopener noreferrer"
+                  class="project-link" aria-label="View Talenta UMS live demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+</body>
+
+</html>
