@@ -29,3 +29,45 @@ body {
   margin: 0;
   padding: 0;
 }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(245, 240, 235, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.2rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+nav ul li a {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  transition: var(--transition);
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: var(--clr-accent);
+}
+
+.logo-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--clr-accent);
+  border-radius: 50%;
+}
