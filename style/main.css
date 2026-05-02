@@ -271,3 +271,61 @@ nav ul li a.active {
 .grad-purple {
   background: linear-gradient(135deg, #667eea, #764ba2);
 }
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--clr-border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2rem;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  background: var(--clr-accent);
+  border-radius: 50%;
+}
+
+.timeline-period {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--clr-accent);
+}
+
+.timeline-role {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--clr-primary);
+}
+
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-top: .75rem;
+}
+
+.timeline-tag {
+  font-size: .72rem;
+  font-weight: 600;
+  background: var(--clr-border);
+  padding: .2rem .65rem;
+  border-radius: var(--radius-full);
+}
