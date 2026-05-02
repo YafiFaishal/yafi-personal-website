@@ -1,13 +1,31 @@
-/* style/main.css */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Inter:wght@400;500&display=swap');
+
+:root {
+  --clr-bg: #f5f0eb;
+  --clr-bg-card: #ffffff;
+  --clr-primary: #1a1a2e;
+  --clr-accent: #c0392b;
+  --clr-text: #2d2d2d;
+  --clr-text-muted: #6b6b6b;
+  --clr-border: #e0d8d0;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --radius: 1rem;
+  --radius-full: 9999px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  font-family: sans-serif;
-  line-height: 1.6;
 }
