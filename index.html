@@ -4,17 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Yafi Faishal personal portfolio">
-  <title>Yafi Faishal | Portfolio</title>
-  <link rel="stylesheet" href="style/main.css">
+  <meta name="description"
+    content="Yafi Faishal — Computer Science student passionate about web development, design, and building meaningful digital experiences.">
+  <title>Yafi Faishal | Personal Portfolio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
+
+  <input type="checkbox" id="dark-mode-toggle" class="dark-toggle" aria-label="Toggle dark mode">
+
+  <!-- HEADER -->
   <header>
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo">
+      <a href="index.html" class="nav-logo" aria-label="Yafi Faishal Home">
         <span class="logo-dot"></span> Yafi Faishal
       </a>
       <nav aria-label="Main navigation">
@@ -24,6 +29,11 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+      <label for="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="toggle-track">
+          <span class="toggle-thumb"></span>
+        </span>
+      </label>
     </div>
   </header>
 
@@ -82,9 +92,11 @@
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section class="about" aria-labelledby="about-heading">
       <div class="container about-inner">
-        <div>
+
+        <div class="anim-fade-left">
           <p class="section-tag">About Me</p>
           <h2 id="about-heading" class="section-title">Turning ideas into<br>digital reality.</h2>
           <div class="about-stats">
@@ -96,15 +108,39 @@
               <div class="stat-number">10+</div>
               <div class="stat-label">Projects Done</div>
             </div>
+            <div class="stat-card">
+              <div class="stat-number">5+</div>
+              <div class="stat-label">Technologies</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">∞</div>
+              <div class="stat-label">Curiosity</div>
+            </div>
           </div>
         </div>
-        <div class="about-text">
-          <p>I'm <strong>Yafi Faishal</strong>, a Computer Science student with a passion for front-end development.</p>
-          <a href="portfolio.html" class="btn btn-primary btn-about">See My Projects</a>
+
+        <div class="about-text anim-fade-right delay-2">
+          <p class="section-tag">Background</p>
+          <p>
+            I'm <strong>Yafi Faishal</strong>, a Computer Science student with a strong passion for front-end web
+            development and user interface design. I love transforming complex ideas into intuitive, beautiful web
+            experiences.
+          </p>
+          <p>
+            My journey in technology started with curiosity about how websites work. Since then, I've been continuously
+            learning and building — from simple static pages to more complex interactive applications.
+          </p>
+          <p>
+            When I'm not coding, I enjoy exploring design trends, contributing to collaborative projects, and expanding
+            my knowledge in areas like accessibility and performance optimization.
+          </p>
+          <a href="portfolio.html" class="btn btn-primary btn-about">
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> See My Projects
+          </a>
         </div>
+
       </div>
     </section>
-
   </main>
 </body>
 
