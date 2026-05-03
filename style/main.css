@@ -433,6 +433,40 @@ nav ul li a.active {
   transform: translateY(-2px);
 }
 
+footer {
+  background: var(--clr-primary);
+  color: rgba(255, 255, 255, 0.6);
+  padding-block: 2.5rem;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: #fff;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
 @media (max-width: 900px) {
   .hero-inner {
     grid-template-columns: 1fr;
