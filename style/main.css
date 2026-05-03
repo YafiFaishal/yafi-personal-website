@@ -520,3 +520,83 @@ footer {
     gap: 1rem;
   }
 }
+
+/* Toggle UI */
+.dark-toggle {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1.2rem;
+}
+
+.toggle-track {
+  width: 54px;
+  height: 28px;
+  background: var(--clr-border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  transition: background 0.35s ease;
+}
+
+.toggle-thumb {
+  width: 22px;
+  height: 22px;
+  background: var(--clr-bg-card);
+  border-radius: 50%;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.toggle-thumb::after {
+  content: '☀️';
+}
+
+/* Dark mode state */
+body:has(#dark-mode-toggle:checked) .toggle-track {
+  background: var(--clr-accent);
+}
+
+body:has(#dark-mode-toggle:checked) .toggle-thumb {
+  transform: translateX(26px);
+}
+
+body:has(#dark-mode-toggle:checked) .toggle-thumb::after {
+  content: '🌙';
+}
+
+/* Dark palette — warm dark, not cold black */
+body:has(#dark-mode-toggle:checked) {
+  --clr-bg: #2b2318;
+  --clr-bg-card: #382e21;
+  --clr-primary: #ede6db;
+  --clr-accent: #d44038;
+  --clr-text: #ddd6cc;
+  --clr-text-muted: #9e9080;
+  --clr-border: #4a3e30;
+}
+
+/* Specific overrides */
+body:has(#dark-mode-toggle:checked) header {
+  background-color: rgba(43, 35, 24, 0.92);
+}
+
+body:has(#dark-mode-toggle:checked) footer {
+  background: #1a1208;
+}
+
+body:has(#dark-mode-toggle:checked) .btn-primary {
+  background: var(--clr-accent);
+}
