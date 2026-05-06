@@ -57,9 +57,7 @@ membangun-website-personal-YafiFaishal/
 
 ## 3. Link Website yang Sudah Di-Host
 
-> 🌐 **[Isi link deployment kamu di sini]**
->
-> Contoh: `https://yafifaishal.github.io/membangun-website-personal-YafiFaishal/`
+> 🌐 **https://yafi-personal-website-deploy.vercel.app/**
 
 ---
 
