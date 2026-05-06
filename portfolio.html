@@ -14,9 +14,13 @@
 
 <body>
 
-  <input type="checkbox" id="dark-mode-toggle" class="dark-toggle" aria-label="Toggle dark mode"> <!-- This Is for the Dark Mode Toggle -->
+  <input type="checkbox" id="dark-mode-toggle" class="dark-toggle" aria-label="Toggle dark mode">
 
-  <!-- HEADER -->
+  <!-- =======================================================
+       HEADER & NAVIGATION
+       Sticky header with logo, nav links, and dark mode
+       toggle label. Active page indicated by .active class.
+       ======================================================= -->
   <header>
     <div class="container nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Yafi Faishal Home">
@@ -29,7 +33,7 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-      <label for="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark mode"> <!-- This Is for the Dark Mode Toggle -->
+      <label for="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark mode">
         <span class="toggle-track">
           <span class="toggle-thumb"></span>
         </span>
@@ -38,7 +42,11 @@
   </header>
 
   <main>
-    <!-- PORTFOLIO HERO -->
+    <!-- =======================================================
+         PAGE HERO — Portfolio
+         Centered heading section introducing the portfolio
+         page with a title and brief description.
+         ======================================================= -->
     <section class="portfolio-hero" aria-labelledby="portfolio-heading">
       <div class="container">
         <p class="section-tag anim-fade-up">My Work</p>
@@ -50,7 +58,12 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- =======================================================
+         PROJECTS GRID
+         Featured project cards displayed in an auto-fill
+         CSS Grid. Each card links to a live demo and/or
+         source code repository.
+         ======================================================= -->
     <section aria-labelledby="projects-heading">
       <div class="container">
         <p class="section-tag anim-fade-up">Featured Projects</p>
@@ -60,9 +73,7 @@
 
           <article class="project-card anim-fade-up delay-1">
             <div class="project-img">
-              <div class="project-img-placeholder grad-purple">
-                💼
-              </div>
+              <img src="images/porto.png" alt="CV Portfolio" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div class="project-body">
               <div class="project-tags">
@@ -74,51 +85,182 @@
               <p class="project-desc">A single-page application CV portfolio built with React, presenting personal
                 information, skills, and experience in a clean, interactive layout deployed on Vercel.</p>
               <div class="project-links">
-                <a href="https://spa-cv-portfolio-yafi-faishal.vercel.app" target="_blank">Live Demo</a>
-                <a href="https://jadi-talentaums.vercel.app" target="_blank">Live Demo</a>
+                <a href="https://spa-cv-portfolio-yafi-faishal.vercel.app" target="_blank" rel="noopener noreferrer"
+                  class="project-link" aria-label="View CV Portfolio live demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live Demo
+                </a>
+                <a href="https://github.com/YafiFaishal" target="_blank" rel="noopener noreferrer" class="project-link"
+                  aria-label="View CV Portfolio source code on GitHub">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i> Source Code
+                </a>
               </div>
             </div>
           </article>
+
+          <article class="project-card anim-fade-up delay-2">
+            <div class="project-img">
+              <img src="images/talenta-ums.png" alt="Talenta UMS" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">Web App</span>
+                <span class="project-tag">Vercel</span>
+              </div>
+              <h3 class="project-title">Talenta UMS</h3>
+              <p class="project-desc">A web platform developed for Universitas Muhammadiyah Surakarta to support student
+                talent development and academic opportunity discovery.</p>
+              <div class="project-links">
+                <a href="https://jadi-talentaums.vercel.app" target="_blank" rel="noopener noreferrer"
+                  class="project-link" aria-label="View Talenta UMS live demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card anim-fade-up delay-3">
+            <div class="project-img">
+              <img src="images/ipay-task.png" alt="iPay Tasks" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">To-Do App</span>
+                <span class="project-tag">Vercel</span>
+                <span class="project-tag">JavaScript</span>
+              </div>
+              <h3 class="project-title">iPay Tasks</h3>
+              <p class="project-desc">A clean and intuitive to-do application to manage daily tasks efficiently. Built
+                and deployed on Vercel with a focus on simplicity and usability.</p>
+              <div class="project-links">
+                <a href="https://ipay-tasks-deploy.vercel.app/" target="_blank" rel="noopener noreferrer"
+                  class="project-link" aria-label="View iPay Tasks live demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card anim-fade-up delay-4">
+            <div class="project-img">
+              <img src="images/fintara.png" alt="FINTARA" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">Web App</span>
+                <span class="project-tag">Finance</span>
+                <span class="project-tag">JavaScript</span>
+              </div>
+              <h3 class="project-title">FINTARA</h3>
+              <p class="project-desc">Financial Tracker &amp; Awareness — A web application to help Gen Z Indonesia
+                avoid impulsive buying with a monthly budget tracker and a psychology-based cooling-off period timer.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/YafiFaishal/fintara" target="_blank" rel="noopener noreferrer"
+                  class="project-link" aria-label="View FINTARA source code on GitHub">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i> Source Code
+                </a>
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <!-- experience section -->
+    <!-- =======================================================
+         EDUCATION & EXPERIENCE TIMELINE
+         Two-column layout: Education on the left, Experience
+         on the right. Each entry uses a vertical timeline
+         with accent dot markers and tech tag pills.
+         ======================================================= -->
     <section class="experience" aria-labelledby="experience-heading">
       <div class="container">
-        <h2 id="experience-heading" class="section-title">Education &amp; Experience</h2>
+        <p class="section-tag anim-fade-up">Background</p>
+        <h2 id="experience-heading" class="section-title anim-fade-up delay-1">Education &amp; Experience</h2>
+
         <div class="exp-grid">
-          <div>
-            <h3 class="exp-col-title"><i class="fa-solid fa-graduation-cap exp-icon"></i> Education</h3>
+
+          <div class="anim-fade-left delay-2">
+            <h3 class="exp-col-title">
+              <i class="fa-solid fa-graduation-cap exp-icon" aria-hidden="true"></i> Education
+            </h3>
             <div class="timeline">
               <div class="timeline-item">
                 <div class="timeline-period">2023 — Present</div>
                 <div class="timeline-role">S1 Informatics Engineering</div>
                 <div class="timeline-place">Universitas Muhammadiyah Surakarta</div>
+                <div class="timeline-desc">Focusing on web development, algorithms, and software engineering. Actively
+                  building projects in front-end and full-stack development.</div>
               </div>
             </div>
           </div>
-          <div>
-            <h3 class="exp-col-title"><i class="fa-solid fa-briefcase exp-icon"></i> Experience</h3>
+
+          <div class="anim-fade-right delay-3">
+            <h3 class="exp-col-title">
+              <i class="fa-solid fa-briefcase exp-icon" aria-hidden="true"></i> Experience
+            </h3>
             <div class="timeline">
+
               <div class="timeline-item">
                 <div class="timeline-period">Jun 2024 — Aug 2024</div>
                 <div class="timeline-role">Participant — Web Development Bootcamp</div>
-                <div class="timeline-place">Dicoding Indonesia</div>
+                <div class="timeline-place">Dicoding Indonesia · Organization</div>
+                <div class="timeline-desc">Followed an intensive 3-month web development bootcamp. Learned HTML, CSS,
+                  JavaScript, and ReactJS fundamentals. Completed 6+ practical projects including landing pages, to-do
+                  apps, and portfolio websites. Earned a front-end development competency certificate.</div>
                 <div class="timeline-tags">
                   <span class="timeline-tag">HTML5</span>
                   <span class="timeline-tag">CSS3</span>
+                  <span class="timeline-tag">JavaScript</span>
                   <span class="timeline-tag">ReactJS</span>
+                  <span class="timeline-tag">Git</span>
                 </div>
               </div>
+
+              <div class="timeline-item">
+                <div class="timeline-period">Sep 2024 — Nov 2024</div>
+                <div class="timeline-role">Volunteer Web Developer</div>
+                <div class="timeline-place">Komunitas Web Developer Online · Organization</div>
+                <div class="timeline-desc">Contributed as a volunteer developer to build a campus mosque activity
+                  information website. Responsible for front-end development using modern web technologies. Collaborated
+                  with designers and backend developers in an agile workflow.</div>
+                <div class="timeline-tags">
+                  <span class="timeline-tag">ReactJS</span>
+                  <span class="timeline-tag">Tailwind CSS</span>
+                  <span class="timeline-tag">Firebase</span>
+                  <span class="timeline-tag">Git</span>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-period">Oct 2024 — Nov 2024</div>
+                <div class="timeline-role">Smart AI Personal Assistant</div>
+                <div class="timeline-place">Proyek Mandiri · Project</div>
+                <div class="timeline-desc">Built an intelligent web-based chatbot integrated with OpenAI API. Features
+                  real-time Q&amp;A, a code debugging helper, and chat history via LocalStorage. Focused on async/await
+                  handling and efficient state management.</div>
+                <div class="timeline-tags">
+                  <span class="timeline-tag">React.js</span>
+                  <span class="timeline-tag">OpenAI API</span>
+                  <span class="timeline-tag">Axios</span>
+                  <span class="timeline-tag">LocalStorage</span>
+                  <span class="timeline-tag">CSS Modules</span>
+                </div>
+              </div>
+
             </div>
           </div>
+
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- =======================================================
+       FOOTER
+       Site-wide footer with branding, copyright notice,
+       and secondary navigation links for quick access.
+       ======================================================= -->
   <footer>
     <div class="container footer-inner">
       <span class="footer-logo">Yafi Faishal</span>
@@ -130,7 +272,6 @@
       </nav>
     </div>
   </footer>
-
 
 </body>
 

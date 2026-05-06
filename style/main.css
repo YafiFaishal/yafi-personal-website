@@ -1,27 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Inter:wght@400;500&display=swap');
+/* =========================================================
+   TYPOGRAPHY — Google Fonts
+   Outfit: headings & display text (weights 400–900)
+   Inter: body copy & UI labels (weights 300–600)
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
 
+/* =========================================================
+   UTILITY CLASSES
+   Reusable helper classes extracted from inline styles
+   to maintain W3C compliance and separation of concerns.
+   ========================================================= */
+.btn-about {
+  margin-top: 1.5rem;
+  display: inline-flex;
+}
+
+.subtitle-center {
+  margin-inline: auto;
+}
+
+.grad-purple {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.grad-pink {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.grad-blue {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+}
+
+.grad-green {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  margin-top: 1rem;
+}
+
+.exp-col-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.exp-icon {
+  color: var(--clr-accent);
+}
+
+/* =========================================================
+   DESIGN TOKENS — CSS Custom Properties
+   Single source of truth for all colors, fonts, spacing,
+   shadows, and timing. Override in dark mode via :has().
+   ========================================================= */
 :root {
   --clr-bg: #f5f0eb;
   --clr-bg-card: #ffffff;
   --clr-primary: #1a1a2e;
   --clr-accent: #c0392b;
+  --clr-accent-light: #e74c3c;
   --clr-text: #2d2d2d;
   --clr-text-muted: #6b6b6b;
   --clr-border: #e0d8d0;
+  --clr-shape: #2d2d2d;
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
   --radius: 1rem;
   --radius-full: 9999px;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.14);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --max-width: 1100px;
 }
 
-body {
-  font-family: var(--font-body);
-  background-color: var(--clr-bg);
-  color: var(--clr-text);
-}
-
+/* =========================================================
+   RESET & BASE STYLES
+   Normalizes browser defaults and establishes consistent
+   base typography, box model, and scroll behavior.
+   ========================================================= */
 *,
 *::before,
 *::after {
@@ -30,7 +95,40 @@ body {
   padding: 0;
 }
 
-/*Animation*/
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* =========================================================
+   KEYFRAME ANIMATIONS
+   Entry animations applied on page load to guide user
+   attention. Delay utility classes stagger timing.
+   float: used on profile image for ambient movement.
+   ========================================================= */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -55,6 +153,18 @@ body {
   }
 }
 
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes float {
 
   0%,
@@ -67,12 +177,26 @@ body {
   }
 }
 
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .anim-fade-up {
   animation: fadeInUp 0.7s ease both;
 }
 
 .anim-fade-left {
   animation: fadeInLeft 0.7s ease both;
+}
+
+.anim-fade-right {
+  animation: fadeInRight 0.7s ease both;
 }
 
 .delay-1 {
@@ -87,11 +211,35 @@ body {
   animation-delay: 0.3s;
 }
 
-.profile-wrapper {
-  animation: float 5s ease-in-out infinite;
+.delay-4 {
+  animation-delay: 0.4s;
 }
 
+.delay-5 {
+  animation-delay: 0.5s;
+}
 
+.delay-6 {
+  animation-delay: 0.6s;
+}
+
+/* =========================================================
+   LAYOUT — Container
+   Centers content with a max-width constraint and fluid
+   90% width to maintain comfortable reading on all screens.
+   ========================================================= */
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+
+/* =========================================================
+   HEADER & NAVIGATION
+   Sticky header with frosted-glass backdrop using
+   backdrop-filter. Active nav link indicated by accent
+   bottom border. Toggle label lives inside nav-inner.
+   ========================================================= */
 header {
   position: sticky;
   top: 0;
@@ -108,32 +256,52 @@ header {
   padding-block: 1.2rem;
 }
 
+.nav-logo {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -0.03em;
+  color: var(--clr-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-logo .logo-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--clr-accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+
 nav ul {
   display: flex;
   gap: 2rem;
-  list-style: none;
+  align-items: center;
 }
 
 nav ul li a {
   font-family: var(--font-heading);
   font-weight: 500;
+  font-size: 0.95rem;
   color: var(--clr-text-muted);
   transition: var(--transition);
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
   color: var(--clr-accent);
+  border-bottom-color: var(--clr-accent);
 }
 
-.logo-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background: var(--clr-accent);
-  border-radius: 50%;
-}
-
+/* =========================================================
+   HERO SECTION
+   Full-viewport landing area with a two-column grid:
+   text content (left) and floating profile image (right).
+   ========================================================= */
 .hero {
   min-height: calc(100vh - 70px);
   display: flex;
@@ -148,31 +316,77 @@ nav ul li a.active {
   align-items: center;
 }
 
+.hero-text .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--clr-border);
+  color: var(--clr-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+}
+
+.hero-text .tag::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--clr-accent);
+  border-radius: 50%;
+}
+
 .hero-text h1 {
   font-family: var(--font-heading);
   font-size: clamp(2.8rem, 5vw, 4.5rem);
   font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
   color: var(--clr-primary);
+  margin-bottom: 1.2rem;
 }
 
 .hero-text h1 .accent {
   color: var(--clr-accent);
 }
 
+.hero-text .subtitle {
+  font-size: 1.1rem;
+  color: var(--clr-text-muted);
+  max-width: 420px;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--clr-accent);
+  border-radius: 2px;
+  margin-bottom: 2rem;
+}
+
 .btn-group {
   display: flex;
   gap: 1rem;
-  margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
-  padding: .8rem 1.8rem;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
   border-radius: var(--radius-full);
+  font-family: var(--font-heading);
   font-weight: 700;
+  font-size: 0.9rem;
   transition: var(--transition);
+  cursor: pointer;
+  border: 2px solid transparent;
 }
 
 .btn-primary {
@@ -183,8 +397,150 @@ nav ul li a.active {
 .btn-primary:hover {
   background: var(--clr-accent);
   transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(192, 57, 43, 0.35);
 }
 
+.btn-secondary {
+  background: transparent;
+  color: var(--clr-primary);
+  border-color: var(--clr-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+  transform: translateY(-2px);
+}
+
+/* Profile image — layered circles with decorative shapes
+   positioned absolutely inside a fixed-size wrapper. */
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.profile-wrapper {
+  position: relative;
+  width: 340px;
+  height: 380px;
+  animation: float 5s ease-in-out infinite;
+}
+
+.profile-shape-bg {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: var(--clr-shape);
+  border-radius: 50%;
+  bottom: 0;
+  right: 10px;
+  z-index: 0;
+}
+
+.profile-shape-accent {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: var(--clr-accent);
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.profile-img-circle {
+  position: absolute;
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--clr-bg);
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  box-shadow: var(--shadow);
+}
+
+.profile-img-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Social icon links — circular bordered buttons that
+   fill on hover to indicate interactivity. */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--clr-border);
+  color: var(--clr-text-muted);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* =========================================================
+   SHARED SECTION STYLES
+   Common typography patterns reused across all pages:
+   section-tag (eyebrow), section-title, section-subtitle.
+   ========================================================= */
+section {
+  padding-block: 5rem;
+}
+
+.section-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--clr-primary);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--clr-text-muted);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+/* =========================================================
+   ABOUT SECTION — index.html
+   Two-column grid: stat cards on the left summarize
+   achievements; bio copy on the right tells the story.
+   ========================================================= */
 .about {
   background: var(--clr-bg-card);
 }
@@ -193,7 +549,7 @@ nav ul li a.active {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
   gap: 4rem;
-  padding-block: 5rem;
+  align-items: start;
 }
 
 .about-stats {
@@ -205,23 +561,48 @@ nav ul li a.active {
 
 .stat-card {
   background: var(--clr-bg);
-  border: 1px solid var(--clr-border);
   border-radius: var(--radius);
   padding: 1.4rem;
   text-align: center;
+  border: 1px solid var(--clr-border);
+  transition: var(--transition);
 }
 
-.stat-number {
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--clr-accent);
+}
+
+.stat-card .stat-number {
   font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 900;
   color: var(--clr-accent);
 }
 
+.stat-card .stat-label {
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+  margin-top: 0.3rem;
+}
+
+.about-text p {
+  color: var(--clr-text-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* =========================================================
+   SKILLS SECTION — index.html
+   Auto-fill grid of skill cards, each with an emoji icon
+   and label. Lifts on hover to signal interactivity.
+   ========================================================= */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.2rem;
+  margin-top: 1rem;
 }
 
 .skill-card {
@@ -237,88 +618,71 @@ nav ul li a.active {
 
 .skill-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-hover);
   border-color: var(--clr-accent);
 }
 
-.about {
-  background: var(--clr-bg-card);
-}
-
-.about-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 4rem;
-  padding-block: 5rem;
-}
-
-.about-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  margin-top: 2rem;
-}
-
-.stat-card {
+.skill-icon {
+  width: 44px;
+  height: 44px;
   background: var(--clr-bg);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius);
-  padding: 1.4rem;
-  text-align: center;
-}
-
-.stat-number {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--clr-accent);
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.2rem;
-}
-
-.skill-card {
-  background: var(--clr-bg-card);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius);
-  padding: 1.4rem;
+  border-radius: 0.6rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  transition: var(--transition);
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
 }
 
-.skill-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-  border-color: var(--clr-accent);
+.skill-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--clr-primary);
+}
+
+.skill-level {
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+}
+
+/* =========================================================
+   PORTFOLIO PAGE — portfolio.html
+   Project cards in an auto-fill CSS Grid. Each card has
+   a gradient banner, tech tag pills, title, description,
+   and external links to live demo and source code.
+   ========================================================= */
+.portfolio-hero {
+  padding-block: 5rem 3rem;
+  text-align: center;
 }
 
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.8rem;
+  padding-bottom: 5rem;
 }
 
 .project-card {
   background: var(--clr-bg-card);
-  border: 1px solid var(--clr-border);
   border-radius: var(--radius);
+  border: 1px solid var(--clr-border);
   overflow: hidden;
   transition: var(--transition);
 }
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-hover);
   border-color: var(--clr-accent);
 }
 
 .project-img {
   height: 180px;
+  overflow: hidden;
+  background: var(--clr-bg);
+  position: relative;
 }
 
 .project-img-placeholder {
@@ -330,13 +694,80 @@ nav ul li a.active {
   font-size: 2.5rem;
 }
 
-.grad-purple {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+.project-body {
+  padding: 1.5rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.project-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  background: rgba(192, 57, 43, 0.08);
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-full);
+}
+
+.project-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--clr-primary);
+  margin-bottom: 0.5rem;
+}
+
+.project-desc {
+  font-size: 0.88rem;
+  color: var(--clr-text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.project-link {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: var(--transition);
+  border-bottom: 1.5px solid var(--clr-border);
+  padding-bottom: 1px;
+}
+
+.project-link:hover {
+  color: var(--clr-accent);
+  border-color: var(--clr-accent);
+}
+
+/* =========================================================
+   EXPERIENCE & EDUCATION TIMELINE — portfolio.html
+   Vertical timeline built with ::before pseudo-elements
+   for the line and dot markers. Tech tag pills show
+   skills used in each role or project.
+   ========================================================= */
+.experience {
+  background: var(--clr-bg-card);
 }
 
 .timeline {
   position: relative;
   padding-left: 2rem;
+  margin-top: 1rem;
 }
 
 .timeline::before {
@@ -363,40 +794,83 @@ nav ul li a.active {
   height: 12px;
   background: var(--clr-accent);
   border-radius: 50%;
+  border: 3px solid var(--clr-bg-card);
 }
 
 .timeline-period {
-  font-size: .78rem;
+  font-size: 0.78rem;
   font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--clr-accent);
+  margin-bottom: 0.3rem;
 }
 
 .timeline-role {
   font-family: var(--font-heading);
   font-weight: 700;
+  font-size: 1rem;
   color: var(--clr-primary);
+}
+
+.timeline-place {
+  font-size: 0.88rem;
+  color: var(--clr-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-desc {
+  font-size: 0.88rem;
+  color: var(--clr-text-muted);
+  line-height: 1.65;
 }
 
 .timeline-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: .4rem;
-  margin-top: .75rem;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
 }
 
 .timeline-tag {
-  font-size: .72rem;
+  font-size: 0.72rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--clr-primary);
   background: var(--clr-border);
-  padding: .2rem .65rem;
+  padding: 0.2rem 0.65rem;
   border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.timeline-tag:hover {
+  background: rgba(192, 57, 43, 0.1);
+  color: var(--clr-accent);
+  border-color: var(--clr-accent);
+}
+
+/* =========================================================
+   CONTACT PAGE — contact.html
+   Two-column layout: dark info card on the left with
+   real contact details and social links; white form card
+   on the right for sending a message (design only).
+   ========================================================= */
+.contact-hero {
+  padding-block: 5rem 2rem;
+  text-align: center;
+}
+
+.contact-hero .section-subtitle {
+  margin-inline: auto;
 }
 
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: 3rem;
-  padding-block: 5rem;
+  padding-bottom: 5rem;
+  align-items: start;
 }
 
 .contact-info-card {
@@ -406,24 +880,145 @@ nav ul li a.active {
   padding: 2.5rem;
 }
 
+.contact-info-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info-card p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-item-icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.contact-item-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-item-value {
+  font-size: 0.9rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.contact-socials {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.contact-socials a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.contact-socials a:hover {
+  background: var(--clr-accent);
+  transform: translateY(-3px);
+}
+
+/* Contact form card — input fields use accent border
+   on focus to confirm active state for accessibility. */
+.contact-form-card {
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+}
+
+.contact-form-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-primary);
+  margin-bottom: 0.4rem;
+}
+
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
   width: 100%;
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
   border: 1.5px solid var(--clr-border);
-  border-radius: .6rem;
+  border-radius: 0.6rem;
   font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--clr-text);
   background: var(--clr-bg);
+  transition: var(--transition);
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--clr-accent);
+  background: #fff;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 130px;
 }
 
 .form-submit {
   width: 100%;
-  padding: .9rem;
+  padding: 0.9rem;
   background: var(--clr-primary);
   color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
   border: none;
   border-radius: var(--radius-full);
-  font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
 }
@@ -431,12 +1026,19 @@ nav ul li a.active {
 .form-submit:hover {
   background: var(--clr-accent);
   transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(192, 57, 43, 0.3);
 }
 
+/* =========================================================
+   FOOTER
+   Dark background using --clr-primary for strong contrast.
+   Flex row with logo, copyright, and secondary nav links.
+   ========================================================= */
 footer {
   background: var(--clr-primary);
   color: rgba(255, 255, 255, 0.6);
   padding-block: 2.5rem;
+  text-align: center;
 }
 
 .footer-inner {
@@ -451,6 +1053,11 @@ footer {
   font-family: var(--font-heading);
   font-weight: 800;
   color: #fff;
+  font-size: 1.1rem;
+}
+
+.footer-copy {
+  font-size: 0.83rem;
 }
 
 .footer-links {
@@ -459,6 +1066,7 @@ footer {
 }
 
 .footer-links a {
+  font-size: 0.83rem;
   color: rgba(255, 255, 255, 0.6);
   transition: var(--transition);
 }
@@ -467,6 +1075,13 @@ footer {
   color: #fff;
 }
 
+/* =========================================================
+   RESPONSIVE — Media Queries
+   900px: collapses multi-column grids to single column
+           for tablets and large phones.
+   600px: further tightens nav, form rows, and grids
+           for small phone screens.
+   ========================================================= */
 @media (max-width: 900px) {
   .hero-inner {
     grid-template-columns: 1fr;
@@ -475,6 +1090,22 @@ footer {
 
   .hero-image {
     order: -1;
+  }
+
+  .hero-divider {
+    margin-inline: auto;
+  }
+
+  .hero-text .subtitle {
+    margin-inline: auto;
+  }
+
+  .btn-group {
+    justify-content: center;
+  }
+
+  .social-links {
+    justify-content: center;
   }
 
   .about-inner {
@@ -489,18 +1120,33 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .btn-group {
-    justify-content: center;
+  .profile-wrapper {
+    width: 260px;
+    height: 290px;
   }
 
-  .social-links {
-    justify-content: center;
+  .profile-shape-bg {
+    width: 230px;
+    height: 230px;
+  }
+
+  .profile-img-circle {
+    width: 210px;
+    height: 210px;
   }
 }
 
 @media (max-width: 600px) {
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+
+  nav ul li a {
+    font-size: 0.85rem;
   }
 
   .projects-grid {
@@ -511,17 +1157,27 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
 
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .footer-inner {
     flex-direction: column;
     text-align: center;
   }
-
-  nav ul {
-    gap: 1rem;
-  }
 }
 
-/* Toggle UI */
+/* =========================================================
+   DARK MODE — CSS-Only Toggle
+   A hidden <input type="checkbox"> controls theme state.
+   body:has(#dark-mode-toggle:checked) overrides all design
+   tokens with a warm dark palette (same hues, deeper tones).
+   No JavaScript required. Toggle UI is a sliding pill switch
+   with ☀️ / 🌙 icon inside the header.
+   ========================================================= */
+
+/* Visually hide the checkbox while keeping it accessible
+   to keyboard and assistive technologies. */
 .dark-toggle {
   position: absolute;
   opacity: 0;
@@ -530,22 +1186,26 @@ footer {
   pointer-events: none;
 }
 
+/* Toggle label acts as the visible switch button.
+   Clicking it checks/unchecks the hidden input. */
 .theme-toggle {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   margin-left: 1.2rem;
+  flex-shrink: 0;
 }
 
 .toggle-track {
+  position: relative;
   width: 54px;
   height: 28px;
   background: var(--clr-border);
   border-radius: 14px;
+  transition: background 0.35s ease;
   display: flex;
   align-items: center;
   padding: 3px;
-  transition: background 0.35s ease;
 }
 
 .toggle-thumb {
@@ -553,18 +1213,21 @@ footer {
   height: 22px;
   background: var(--clr-bg-card);
   border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 13px;
+  line-height: 1;
 }
 
 .toggle-thumb::after {
   content: '☀️';
 }
 
-/* Dark mode state */
+/* When checked: track fills with accent color and the
+   thumb translates right to indicate dark mode is on. */
 body:has(#dark-mode-toggle:checked) .toggle-track {
   background: var(--clr-accent);
 }
@@ -577,26 +1240,184 @@ body:has(#dark-mode-toggle:checked) .toggle-thumb::after {
   content: '🌙';
 }
 
-/* Dark palette — warm dark, not cold black */
+/* =========================================================
+   DARK MODE — Token Overrides
+   Redefines all CSS custom properties with warmer dark
+   tones derived from the light palette (not cold blacks).
+   Specific component overrides follow below where variables
+   alone are insufficient (e.g. footer, buttons).
+   ========================================================= */
 body:has(#dark-mode-toggle:checked) {
   --clr-bg: #2b2318;
   --clr-bg-card: #382e21;
   --clr-primary: #ede6db;
   --clr-accent: #d44038;
+  --clr-accent-light: #e05248;
   --clr-text: #ddd6cc;
   --clr-text-muted: #9e9080;
   --clr-border: #4a3e30;
+  --clr-shape: #ede6db;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.55);
 }
 
-/* Specific overrides */
+/* Header: matches the dark background for seamless
+   frosted-glass effect on dark backgrounds. */
 body:has(#dark-mode-toggle:checked) header {
   background-color: rgba(43, 35, 24, 0.92);
+  border-bottom-color: var(--clr-border);
 }
 
+/* Profile decorative shapes: border matches dark bg
+   so the circle blends naturally into the background. */
+body:has(#dark-mode-toggle:checked) .profile-img-circle {
+  border-color: #2b2318;
+}
+
+body:has(#dark-mode-toggle:checked) .profile-shape-bg {
+  background: #ede6db;
+  opacity: 0.07;
+}
+
+/* Primary button: swaps from dark navy to accent red
+   since --clr-primary becomes a light text color in dark mode. */
+body:has(#dark-mode-toggle:checked) .btn-primary {
+  background: var(--clr-accent);
+  color: #fff;
+}
+
+body:has(#dark-mode-toggle:checked) .btn-primary:hover {
+  background: var(--clr-accent-light);
+  box-shadow: 0 6px 24px rgba(212, 64, 56, 0.4);
+}
+
+/* Alternate section backgrounds: slightly lighter than
+   the page bg to maintain the light/dark rhythm. */
+body:has(#dark-mode-toggle:checked) .about {
+  background: #322819;
+}
+
+body:has(#dark-mode-toggle:checked) .experience {
+  background: #322819;
+}
+
+/* Stat & skill cards: match page background so they
+   read as inset elements rather than elevated cards. */
+body:has(#dark-mode-toggle:checked) .stat-card {
+  background: #2b2318;
+  border-color: var(--clr-border);
+}
+
+
+body:has(#dark-mode-toggle:checked) .skill-card {
+  background: #2b2318;
+  border-color: var(--clr-border);
+}
+
+body:has(#dark-mode-toggle:checked) .skill-icon {
+  background: #1e1810;
+}
+
+/* Project cards & tag pills: dark card surface with
+   semi-transparent accent background on tag pills. */
+body:has(#dark-mode-toggle:checked) .project-card {
+  background: #2b2318;
+  border-color: var(--clr-border);
+}
+
+body:has(#dark-mode-toggle:checked) .project-tag {
+  background: rgba(212, 64, 56, 0.15);
+  color: var(--clr-accent);
+}
+
+/* Gradient banners: darkened versions of the same
+   purple and pink hues used in light mode. */
+body:has(#dark-mode-toggle:checked) .grad-purple {
+  background: linear-gradient(135deg, #3d3270, #2e2050);
+}
+
+body:has(#dark-mode-toggle:checked) .grad-pink {
+  background: linear-gradient(135deg, #7a2d62, #8a2040);
+}
+
+/* Timeline: dot border color matches section background
+   to create a clean cut-out ring effect. */
+body:has(#dark-mode-toggle:checked) .timeline::before {
+  background: var(--clr-border);
+}
+
+body:has(#dark-mode-toggle:checked) .timeline-item::before {
+  background: var(--clr-accent);
+  border-color: #322819;
+}
+
+body:has(#dark-mode-toggle:checked) .timeline-tag {
+  background: #4a3e30;
+  color: var(--clr-text-muted);
+  border-color: transparent;
+}
+
+body:has(#dark-mode-toggle:checked) .timeline-tag:hover {
+  background: rgba(212, 64, 56, 0.15);
+  color: var(--clr-accent);
+  border-color: var(--clr-accent);
+}
+
+/* Contact info card: warm dark tone distinct from the
+   page background to preserve card hierarchy. */
+body:has(#dark-mode-toggle:checked) .contact-info-card {
+  background: #3f3224;
+}
+
+/* Contact form card & inputs: dark input fields with
+   accent border on focus for clear state feedback. */
+body:has(#dark-mode-toggle:checked) .contact-form-card {
+  background: #2b2318;
+  border-color: var(--clr-border);
+}
+
+body:has(#dark-mode-toggle:checked) .form-group input,
+body:has(#dark-mode-toggle:checked) .form-group textarea,
+body:has(#dark-mode-toggle:checked) .form-group select {
+  background: #1e1810;
+  border-color: var(--clr-border);
+  color: var(--clr-text);
+}
+
+body:has(#dark-mode-toggle:checked) .form-group input:focus,
+body:has(#dark-mode-toggle:checked) .form-group textarea:focus,
+body:has(#dark-mode-toggle:checked) .form-group select:focus {
+  background: #382e21;
+  border-color: var(--clr-accent);
+}
+
+body:has(#dark-mode-toggle:checked) .form-submit {
+  background: var(--clr-accent);
+}
+
+body:has(#dark-mode-toggle:checked) .form-submit:hover {
+  background: var(--clr-accent-light);
+}
+
+/* Footer: deepest dark tone in the palette to anchor
+   the page visually and create a strong baseline. */
 body:has(#dark-mode-toggle:checked) footer {
   background: #1a1208;
 }
 
-body:has(#dark-mode-toggle:checked) .btn-primary {
-  background: var(--clr-accent);
+/* Smooth theme transitions on surfaces that change
+   background or border color when toggling dark mode.
+   Kept separate to avoid interfering with entry animations. */
+body,
+header,
+.about,
+.experience,
+.stat-card,
+.skill-card,
+.project-card,
+.contact-form-card,
+.contact-info-card,
+footer {
+  transition: background-color 0.4s ease, color 0.4s ease,
+    border-color 0.4s ease;
 }

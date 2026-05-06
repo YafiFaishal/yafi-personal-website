@@ -14,10 +14,13 @@
 
 <body>
 
-  <input type="checkbox" id="dark-mode-toggle" class="dark-toggle" aria-label="Toggle dark mode"> <!-- This Is for the Dark
-  Mode Toggle -->
+  <input type="checkbox" id="dark-mode-toggle" class="dark-toggle" aria-label="Toggle dark mode">
 
-  <!-- HEADER -->
+  <!-- =======================================================
+       HEADER & NAVIGATION
+       Sticky header with logo, nav links, and dark mode
+       toggle label. Active page indicated by .active class.
+       ======================================================= -->
   <header>
     <div class="container nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Yafi Faishal Home">
@@ -30,8 +33,7 @@
           <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
       </nav>
-      <label for="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark mode"> <!-- This Is for the Dark Mode
-        Toggle -->
+      <label for="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark mode">
         <span class="toggle-track">
           <span class="toggle-thumb"></span>
         </span>
@@ -40,7 +42,11 @@
   </header>
 
   <main>
-    <!-- CONTACT HERO -->
+    <!-- =======================================================
+         PAGE HERO — Contact
+         Centered heading section introducing the contact
+         page with a title and brief invitation to connect.
+         ======================================================= -->
     <section class="contact-hero" aria-labelledby="contact-heading">
       <div class="container">
         <p class="section-tag anim-fade-up">Get In Touch</p>
@@ -51,40 +57,140 @@
         </p>
       </div>
     </section>
-    <!-- contact.html — layout -->
-    <div class="contact-layout container">
-      <aside class="contact-info-card">
-        <h3>Let's Connect</h3>
+
+    <!-- =======================================================
+         CONTACT LAYOUT
+         Two-column grid: info card with real contact details
+         on the left, message form card on the right.
+         The form is design-only and does not submit data.
+         ======================================================= -->
+    <div class="container contact-layout">
+
+      <!-- =======================================================
+           CONTACT INFO CARD
+           Dark card displaying email, location, and social
+           links. Serves as the primary contact reference.
+           ======================================================= -->
+      <aside class="contact-info-card anim-fade-left">
+        <h3>Contact Information</h3>
+        <p>Feel free to reach out anytime. I'll get back to you as soon as possible.</p>
+
         <div class="contact-item">
-          <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div class="contact-item-icon" aria-hidden="true">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
           <div>
             <div class="contact-item-label">Email</div>
             <div class="contact-item-value">Yafif614@gmail.com</div>
           </div>
         </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon" aria-hidden="true">
+            <i class="fa-brands fa-github"></i>
+          </div>
+          <div>
+            <div class="contact-item-label">GitHub</div>
+            <div class="contact-item-value">github.com/YafiFaishal</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon" aria-hidden="true">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </div>
+          <div>
+            <div class="contact-item-label">LinkedIn</div>
+            <div class="contact-item-value">linkedin.com/in/yafi-faishal</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon" aria-hidden="true">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <div class="contact-item-label">Location</div>
+            <div class="contact-item-value">Surakarta, Indonesia</div>
+          </div>
+        </div>
+
         <div class="contact-socials">
-          <a href="https://github.com/YafiFaishal" target="_blank" aria-label="GitHub"><i
-              class="fa-brands fa-github"></i></a>
+          <a href="https://github.com/YafiFaishal" target="_blank" rel="noopener noreferrer"
+            aria-label="GitHub Profile">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/yafi-faishal-b6121a336" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.instagram.com/yafi_faishal/" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram Profile">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:Yafif614@gmail.com" aria-label="Send email">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          </a>
         </div>
       </aside>
-      <div class="contact-form-card">
+
+      <!-- =======================================================
+           CONTACT FORM CARD
+           HTML form for sending a message. Inputs include
+           name, email, subject, and message. Form is
+           design-only — no backend processing is wired up.
+           ======================================================= -->
+      <div class="contact-form-card anim-fade-right delay-2">
         <h3>Send a Message</h3>
-        <form>
+        <form action="#" method="post" novalidate aria-label="Contact form">
+
           <div class="form-row">
-            <div class="form-group"><label for="name">Name</label><input type="text" id="name" placeholder="Your name">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first-name" placeholder="John" autocomplete="given-name">
             </div>
-            <div class="form-group"><label for="email">Email</label><input type="email" id="email"
-                placeholder="your@email.com"></div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last-name" placeholder="Doe" autocomplete="family-name">
+            </div>
           </div>
-          <div class="form-group"><label for="message">Message</label><textarea id="message" rows="5"
-              placeholder="Your message..."></textarea></div>
-          <button type="submit" class="form-submit">Send Message</button>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option value="" disabled selected>Select a topic...</option>
+              <option value="collaboration">Collaboration / Project</option>
+              <option value="opportunity">Job / Internship Opportunity</option>
+              <option value="question">General Question</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message here..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit" id="submit-btn">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send Message
+          </button>
+
         </form>
       </div>
+
     </div>
   </main>
 
-  <!-- FOOTER -->
+  <!-- =======================================================
+       FOOTER
+       Site-wide footer with branding, copyright notice,
+       and secondary navigation links for quick access.
+       ======================================================= -->
   <footer>
     <div class="container footer-inner">
       <span class="footer-logo">Yafi Faishal</span>
