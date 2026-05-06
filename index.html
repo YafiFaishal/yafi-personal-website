@@ -8,8 +8,18 @@
     content="Yafi Faishal — Computer Science student passionate about web development, design, and building meaningful digital experiences.">
   <title>Yafi Faishal | Personal Portfolio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  
+  <!-- Performance optimizations: Preconnect to font domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="images/profile_photo.jpeg" fetchpriority="high">
+
   <link rel="stylesheet" href="style/main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 </head>
 
 <body>
@@ -97,7 +107,7 @@
             <div class="profile-shape-bg" aria-hidden="true"></div>
             <div class="profile-shape-accent" aria-hidden="true"></div>
             <div class="profile-img-circle">
-              <img src="images/profile_photo.jpeg" alt="Portrait photo of Yafi Faishal">
+              <img src="images/profile_photo.jpeg" alt="Portrait photo of Yafi Faishal" width="270" height="270" fetchpriority="high">
             </div>
           </div>
         </div>

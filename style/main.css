@@ -2,8 +2,8 @@
    TYPOGRAPHY — Google Fonts
    Outfit: headings & display text (weights 400–900)
    Inter: body copy & UI labels (weights 300–600)
+   (Now loaded in the HTML <head> for performance)
    ========================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
 
 /* =========================================================
    UTILITY CLASSES
