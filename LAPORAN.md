@@ -63,13 +63,7 @@ membangun-website-personal-YafiFaishal/
 
 ## 4. Screenshot SSH Berhasil Dikonfigurasi
 
-> 📸 **Tempelkan screenshot hasil perintah `ssh -T git@github.com` di bawah ini:**
-
-```
-Hi YafiFaishal! You've successfully authenticated, but GitHub does not provide shell access.
-```
-
-_(Tambahkan gambar screenshot di sini)_
+![SSH Auth](images/connect-ssh.png)
 
 ---
 
